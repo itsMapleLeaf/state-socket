@@ -1,8 +1,8 @@
 import type { DataFunctionArgs } from "@remix-run/node"
 import { redirect } from "@remix-run/node"
-import { Form } from "@remix-run/react"
+import { Form, useTransition } from "@remix-run/react"
 import WebSocket from "isomorphic-ws"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export async function action({ request }: DataFunctionArgs) {
   const form = await request.formData()
@@ -46,9 +46,18 @@ export default function Index() {
     return () => socket.close()
   }, [])
 
+  const formRef = useRef<HTMLFormElement>(null)
+  const transition = useTransition()
+
+  useEffect(() => {
+    if (transition.state === "idle") {
+      formRef.current?.reset()
+    }
+  })
+
   return (
     <main>
-      <Form method="post">
+      <Form method="post" ref={formRef}>
         <input type="text" name="message" />
         <button type="submit">Send</button>
       </Form>
