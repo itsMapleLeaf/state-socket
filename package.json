@@ -1,0 +1,29 @@
+{
+  "name": "state-socket",
+  "author": "itsMapleLeaf",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "lint": "eslint --ext js,ts,tsx .",
+    "lint-fix": "pnpm lint -- --fix",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "coverage": "vitest --run --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@itsmapleleaf/configs": "^1.1.5",
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@types/eslint": "^8.4.5",
+    "@types/node": "^18.0.4",
+    "c8": "^7.11.3",
+    "eslint": "^8.19.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4",
+    "vitest": "^0.18.0"
+  },
+  "prettier": "@itsmapleleaf/configs/prettier"
+}
