@@ -1,3 +1,38 @@
 {
-  "type": "module"
+  "name": "library",
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "tsup": {
+    "entry": [
+      "src/main.ts"
+    ],
+    "target": "node16",
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "dts": true,
+    "sourcemap": true
+  },
+  "dependencies": {
+    "isomorphic-ws": "^5.0.0",
+    "ts-toolbelt": "^9.6.0",
+    "ws": "^8.8.0",
+    "zod": "^3.17.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.4",
+    "@types/ws": "^8.5.3",
+    "tsup": "^6.1.3"
+  }
 }
